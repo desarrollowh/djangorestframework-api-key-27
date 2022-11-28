@@ -161,7 +161,7 @@ class AbstractAPIKey(models.Model):
                 "The API key has been revoked, which cannot be undone."
             )
 
-    def __str__(self) -> str:
+    def __str__(self):
         return str(self.name)
 
 
