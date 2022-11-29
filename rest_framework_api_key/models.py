@@ -122,7 +122,7 @@ class AbstractAPIKey(models.Model):
         verbose_name_plural = "API keys"
 
     def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+        super(AbstractAPIKey, self).__init__(*args, **kwargs)
         # Store the initial value of `revoked` to detect changes.
         self._initial_revoked = self.revoked
 
@@ -153,7 +153,7 @@ class AbstractAPIKey(models.Model):
 
     def save(self, *args, **kwargs):
         self._validate_revoked()
-        super().save(*args, **kwargs)
+        super(AbstractAPIKey, self).save(*args, **kwargs)
 
     def _validate_revoked(self):
         if self._initial_revoked and not self.revoked:
