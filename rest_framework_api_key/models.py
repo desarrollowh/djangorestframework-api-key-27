@@ -78,6 +78,22 @@ class BaseAPIKeyManager(models.Manager):
 
         return True
 
+    def validate_and_get_key(self, key):
+        """
+        :type key: str
+        :return: bool
+        """
+
+        try:
+            api_key = self.get_from_key(key)
+        except self.model.DoesNotExist:
+            return False, None
+
+        if api_key.has_expired:
+            return False, None
+
+        return True, api_key
+
 
 class APIKeyManager(BaseAPIKeyManager):
     pass
