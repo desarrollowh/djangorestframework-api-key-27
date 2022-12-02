@@ -1,7 +1,7 @@
 from setuptools import find_packages, setup
 
 setup(
-    name='drfapikey',
+    name='drfapikey27',
     version=__import__('rest_framework_api_key').__version__,
     author="",
     author_email="",
